@@ -1,0 +1,119 @@
+
+their products
+	https://metro.digital/products
+
+	TODO
+
+	make a list with these and learn about them
+
+
+quick description about
+	Site Reliability Engineer MPOS Air
+		holistic approach:
+			phases of software egineering:
+				- inception
+				- coding
+				- testing
+				- delivery
+				- operation
+
+			this part says that i need to do automation on every one of this stages
+
+		performance mindset:
+			i need to increase productivity of dev teams by focusing on:
+				- observability
+				- scalability (vertical scale of the app)
+				- availability
+				- maintainability
+				- reliability
+
+Questions:
+- what do you mean by this "you will also be leading postmortems after major incidents" ? what kind of incidents? is this just a methafor?
+
+
+What to do and learn:
+	google cloud platform
+	amazon web services
+	microsoft azure
+
+	docker
+		docker cli
+		docker d
+		/var/run/docker.sock
+
+		docker has exposed http REST API with unix socket + http
+
+		create Dockerfile with
+			FROM (import repo from docker hub)
+			WORKDIR - cd
+			RUN - run shell
+			EXPOSE - ports
+			CMD - command to run without using shell login
+
+		there is a docker python module
+
+		docker run sha_name or appname
+
+		docker run -it python:0.0.1 (runs in interactive mode, which means the output from docker container is redirected to current shell, and can get input from your shell)
+
+		docker build -t $image_name:$version (-t is for tag, which is a name)
+			example:
+				docker build -t python:0.0.1 . (creates a python named image with version 0.0.1 from the Dockerfile located at current dir .)
+
+		 sudo docker run -d -p 27017-27019:27017-27019 --name mongodb mongo\n (pulls mongodb is not existent and runs it on ports bla bla )
+
+
+
+
+
+	kubernetes
+		manage docker containers (up 100 and more)
+		update docker containers using one command
+
+		a cluster is a control-plane + workers/nodes
+
+		a pod can have 1 or more docker containers running
+
+		a worker is also called a node on which these are running:
+			- kubelet process
+			- kubelet proxy
+			these are responsible for communicating to the master node
+
+		a worker is a physical machine or a virtual machine
+
+		you can have a physical machine with 100 virtual machines so -> you have a physical machine with 100 k8s nodes that can have 100 pods each with 100 docker containers on it => total is 100 * 100 * 100 docker containers => 1 million docker containers just on one machine
+
+		k8s also exposes an API just docker where you can make an unix http request and get data
+
+		k8s is always listerning for changes on the filesystem for te configuration that you gave it => if you made a change to config file (yaml) -> workers are going to be restarted and apply the new settings
+
+		if 1 wokers dies, kubelet tells scheduler manager to reassign the lost pods to active workers
+
+
+
+
+
+	elasticsearch
+
+	cassandra
+
+	postgresql
+
+	kafka
+
+	jenkins
+
+	gitlab
+
+	datadog
+
+	prometheus
+
+	grafana
+
+	elk-stack
+
+	web security
+
+	networking
+	
