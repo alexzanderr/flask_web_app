@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		implementation of MVC
+	</title>
+</head>
+<body>
+	<div>
+		these were rendered based on the results
+		<strong>
+			{{ results_name }}
+		</strong>
+	</div>
+	<div>
+		and this are the results
+		<strong>
+			{{ result }}
+		</strong>
+	</div>
+
+	{% for  item in database_results %}
+		<h1> {{ item }} </h1>
+	{% endfor %}
+</body>
+</html>

@@ -12,7 +12,7 @@ MAIN_FILE = "main.py"
 
 py:
 	# ran with python3
-	python3 $(MAIN_FILE)
+	python3 app/$(MAIN_FILE)
 
 repl:
 	# run main.py in interactive mode
