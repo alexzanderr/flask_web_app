@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Dashboard </title>
+</head>
+<body>
+	<div>
+		new users added in postgres db
+	</div>
+	<ul>
+		response is
+		
+		{% for k, v in response.items() %}
+			<li>
+				<div>
+					{{ k }} : {{ v }}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

@@ -165,10 +165,3 @@ myproject
 ├──  README.md
 └──  run.py
 ```
-
-# TODOS
-
-- [ ] use OOP
-- [ ] implement MVC
-- [ ] run tests on the flask web app, but how do i do tests
-- [ ] scale vertically

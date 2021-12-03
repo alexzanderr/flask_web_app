@@ -10,6 +10,14 @@ MAIN_BIN = $(ROOT_NAME)
 SPEC_FILE = "$(MAIN_BIN).spec"
 MAIN_FILE = "main.py"
 
+run:
+	# astea nu merg in makefile
+	# export FLASK_APP=src/run.py
+	# export FLASK_ENV=development
+# 	export FLASK_DEBUG=1
+# 	flask run --port 5555
+	./src/run.sh
+
 py:
 	# ran with python3
 	python3 app/$(MAIN_FILE)
@@ -31,7 +39,7 @@ crun:
 	$(BASENAME_ROOT)/dist/$(ROOT_NAME)/$(MAIN_BIN)
 
 test:
-	pytest -vv
+	./src/pytest.sh
 
 pyinstaller:
 	$(BASENAME_ROOT)/pyinstaller-venv/bin/pyinstaller --noconfirm --clean --onedir --name $(ROOT_NAME) main.py

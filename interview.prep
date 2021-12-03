@@ -33,7 +33,9 @@ Questions:
 
 What to do and learn:
 	google cloud platform
+
 	amazon web services
+
 	microsoft azure
 
 	docker
@@ -94,26 +96,112 @@ What to do and learn:
 
 
 	elasticsearch
+		its a search database
+		search engine used to search products on metro website
 
-	cassandra
+		can pe installed using
+			sudo pacman -S elasticsearch
+
+		can be accessed through REST API
+
+		very fast on large datasets
+
+
+
+
+	apache cassandra
+		distributed NoSQL database
+
+		has datacenters with nodes in it
+			each node communicates with every node
+			so its n * (n - 1) / 2 connections between nodes
+
+		a datacenter can handle a petabyte
+
+		each node can handle 4TB of data
+
+		every key in a table accesses a partition
+
+		data is grouped based on a column in nodes in the cluster
+
+		each node has an integer assigned - partition token
+
+		there is a replication factor - RF - meaning that the data is duplicated across the nodes based on that factor to increase redundancy and eliminate all single point of failures
+
+		at write there is consistency level = CL - meaning that if cassandra has to write some data to nodes, it has to wait until the nodes send an OK response for the write process; if the response is BAD, operation is aborted for the other (RF - CL) nodes
+
+		there is cassandra AUR package and `cqlsh` cli tool for querying commands to cassandra service
+
 
 	postgresql
+		exactly like mysql
+		relational database
+		sql
+		easy to use
+		fast
 
 	kafka
+		interaction between website and database
+		messaging system
+		activity tracking
+		metrics from locations
+		applications logs
+		stream processing
+		de-coupling system dependencies
+		its like an mqtt broker
 
 	jenkins
+		automation tool for jobs:
+			build
+			test
+			deploy
+			maintain
+
+		its a java server on localhost:8090, also its a jenkins.service on arch
+
+		has a cli
+
+		has a web interface where you can create jobs for automation
+
+		has accounts for web interface, makes logs about jobs
+
 
 	gitlab
+		same as github
 
 	datadog
+		monitoring of everything through SaaS
+		has a dashboard website with graphs
 
 	prometheus
+		monitoring tool for k8s pods and docker containers
+		monitor a cluster
+		metrics collector, listens on localhost and checks availability and many more features
+		alertmanager -> slack, email
+		data store location for prometheus, local time series database
+
+		get the data with this and visualize with grafana
+
+		cluster node monitoring out of the box
+
 
 	grafana
+		visualization tool for web
+		based on time series
 
 	elk-stack
+		related with elastic search
+		its actually elastic stack - ELC - made of
+			elastic search
+			logstash
+			kibana
+
+			with these you search through logs and perform log analysis
+
+			storing the logs in json format, indexing them, and allowing to perform search on them
+		log analysis - logs are unstructured form of data
+
 
 	web security
 
-	networking
 	
