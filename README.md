@@ -12,19 +12,6 @@ technologies:
 - JavaScript (for interaction with the browser and from the browser)
 - MVC (Model View Controller, we are using flask with MVC)
 
-normally i should use:
-- C# + ASP.NET
-
-but right now i dont know C#, so in order to deliver something good rather than not delivering something at all I should use what I know at the moment and later I will learn C# ASP.NET
-
-Deadline: `48 hours`
-
-requirements as a final result:
-- 2 tables
-- marta + detail
-- crud + filtre
-- implement an MVC (model view controller)
-
 
 # to run the application in dev mode and debug mode
 run in your favorite shell
@@ -33,11 +20,11 @@ git clone https://github.com/alexzanderr/integrisoft-project
 
 cd integrisoft-project
 
-export FLASK_APP=run.py
+export FLASK_APP=src/run.py
 export FLASK_ENV=development
 export FLASK_DEBUG=1
 
-flask run --port=$custom_port
+flask run --port=5555
 ```
 
 # recommended project tree structure
@@ -148,20 +135,50 @@ myproject
 # current project tree structure
 ```shell
 ❱  tree
+❱  tree
  .
-├──  __pycache__
-│  └──  app.cpython-39.pyc
-├──  app
-│  ├──  __init__.py
-│  ├──  __pycache__
-│  │  ├──  __init__.cpython-39.pyc
-│  │  └──  views.cpython-39.pyc
-│  ├──  templates
-│  │  ├──  dashboard.html
-│  │  ├──  index.html
-│  │  └──  mvc.html
-│  └──  views.py
+├──  .github
+├──  .gitignore
+├──  docker-compose.yml
+├──  Dockerfile
+├──  extra.info
+├──  instance
+├──  interview.prep
+├──  Jenkinsfile
 ├──  LICENSE
+├──  Makefile
+├──  pyrightconfig.json
 ├──  README.md
-└──  run.py
+├──  requirements.txt
+├──  src
+│  ├──  app
+│  │  ├──  __init__.py
+│  │  ├──  api
+│  │  │  ├──  __init__.py
+│  │  │  ├──  models.py
+│  │  │  └──  views.py
+│  │  ├──  credentials.py
+│  │  ├──  database_manager.py
+│  │  ├──  example_credentials.py
+│  │  ├──  models.py
+│  │  ├──  redis_manager.py
+│  │  ├──  static
+│  │  │  ├──  icons
+│  │  │  └──  img
+│  │  ├──  templates
+│  │  │  ├──  dashboard.html
+│  │  │  ├──  index.html
+│  │  │  ├──  mvc.html
+│  │  │  ├──  subscribers.html
+│  │  │  └──  users.html
+│  │  └──  views.py
+│  ├──  instance
+│  ├──  pytest.sh
+│  ├──  run.py
+│  ├──  run.sh
+│  └──  tests
+│     ├──  test_api.py
+│     ├──  test_db.py
+│     └──  test_flaskapp.py
+└──  TODO.md
 ```
