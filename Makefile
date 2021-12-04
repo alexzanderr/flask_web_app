@@ -18,6 +18,9 @@ run:
 # 	flask run --port 5555
 	./src/run.sh
 
+guni:
+	./src/guni.sh
+
 py:
 	# ran with python3
 	python3 app/$(MAIN_FILE)

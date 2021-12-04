@@ -139,6 +139,7 @@ What to do and learn:
 		sql
 		easy to use
 		fast
+		localhost:5432 but its not http, i think is postgres protocol
 
 	kafka
 		interaction between website and database
@@ -172,8 +173,16 @@ What to do and learn:
 	datadog
 		monitoring of everything through SaaS
 		has a dashboard website with graphs
+		its not free
+		has an agent which is open source for linux, but the dashboard is only in cloud and i cant connect datadog source to grafana only if it is paid
 
 	prometheus
+		metrics only and not quite
+		localhost:9090
+
+		has workers like
+			node-exporter which exports metrics (localhost:9100/metrics)
+
 		monitoring tool for k8s pods and docker containers
 		monitor a cluster
 		metrics collector, listens on localhost and checks availability and many more features
@@ -188,6 +197,8 @@ What to do and learn:
 	grafana
 		visualization tool for web
 		based on time series
+		localhost:3000
+		needs data sources
 
 	elk-stack
 		related with elastic search

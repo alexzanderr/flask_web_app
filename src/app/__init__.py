@@ -37,6 +37,7 @@ def create_app(test_config=None):
         # with this all config will be in instance folder
         instance_relative_config=True)
 
+
     # its working
     # i dont even need to specify password
     # maybe because its super user

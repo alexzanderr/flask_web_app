@@ -182,3 +182,34 @@ myproject
 │     └──  test_flaskapp.py
 └──  TODO.md
 ```
+
+# run the application with gunicorn (WSGI gateway http server)
+references:
+- https://stackoverflow.com/questions/25319690/how-do-i-run-a-flask-app-in-gunicorn-if-i-used-the-application-factory-pattern
+
+```shell
+gunicorn -w 8 src/run.py:flask_application
+```
+you are forbidden to run with development server, lol
+
+if you have application factory design pattern just specify the file and `create_app` function
+8 workers, works on 8 threads with the run.py file and flask_application variable
+
+how to actually run
+```shell
+cd ./src
+gunicorn -w 8 -b localhost:9999 "app:create_app()"
+
+[2021-12-04 20:56:49 +0200] [4008290] [INFO] Starting gunicorn 20.1.0
+[2021-12-04 20:56:49 +0200] [4008290] [INFO] Listening at: http://127.0.0.1:9999 (4008290)
+[2021-12-04 20:56:49 +0200] [4008290] [INFO] Using worker: sync
+[2021-12-04 20:56:49 +0200] [4008291] [INFO] Booting worker with pid: 4008291
+[2021-12-04 20:56:49 +0200] [4008292] [INFO] Booting worker with pid: 4008292
+[2021-12-04 20:56:49 +0200] [4008293] [INFO] Booting worker with pid: 4008293
+[2021-12-04 20:56:49 +0200] [4008294] [INFO] Booting worker with pid: 4008294
+[2021-12-04 20:56:49 +0200] [4008295] [INFO] Booting worker with pid: 4008295
+[2021-12-04 20:56:50 +0200] [4008296] [INFO] Booting worker with pid: 4008296
+[2021-12-04 20:56:50 +0200] [4008298] [INFO] Booting worker with pid: 4008298
+[2021-12-04 20:56:50 +0200] [4008305] [INFO] Booting worker with pid: 4008305
+```
+done, you have 8 threads for your flask web app

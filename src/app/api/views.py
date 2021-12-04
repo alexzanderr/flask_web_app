@@ -20,6 +20,7 @@ def generate_random_token():
 
 api = Blueprint("api", __name__)
 
+
 __api = "/api"
 
 @api.route(__api)

@@ -22,6 +22,27 @@
 - [x] put credentials in env files
 - [x] make a wrapper for the db commands
 - [x] add async loading animation until the requested data is processed from database
+- [ ] implement logs and add logs collection tools
+- [x] add grafana as monitoring tool
+- [x] create a grafana dashboard with prometheus and prometheus node-exporter
+- [ ] how to create routes automatically from code at runtime
+- [ ] make 2 promethei instances to increase redundancy and reduce single point of failure
+- [ ] add alertmanager to prometheus
+- [ ] embbed your grafana apllication on your flask web app routes, example 'flaskapp.com/grafana' is this possible?
+- [ ] how to export all your grafana config? its json config
+- [ ] install tempo for stack trace
+- [ ] run flask app with gunicorn
+- [ ] redirect from nginx to gunicorn
+- [ ] flask logging (https://flask.palletsprojects.com/en/2.0.x/logging/)
+- [ ] https://thenishchalraj.medium.com/dynamically-embed-grafana-dashboards-in-a-react-component-483b9ecd1dcd
+
+- [ ] https://www.youtube.com/watch?v=Ct9PjmrExzo
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 - [ ]
 - [ ]
 - [ ]
