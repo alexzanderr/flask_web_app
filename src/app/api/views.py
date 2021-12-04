@@ -10,6 +10,10 @@ import sqlalchemy
 from flask import request
 from ..database_manager import Database
 
+
+
+
+
 def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(30)])
 
@@ -46,6 +50,7 @@ def login():
 	# return f"token:{url_token} you are now logged in"
 
 
+
 @api.route(__api + "/new-token")
 def generate_token():
 	new_token = generate_random_token()
@@ -61,6 +66,7 @@ def generate_token():
 	# 	# pyperclip.copy(new_token)
 
 	# 	return f"table auth_tokens didnt existed until now; new token created: {new_token}"
+
 
 	except sqlalchemy.exc.IntegrityError as error:
 		return {

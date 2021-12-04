@@ -21,7 +21,7 @@
 - [ ] create markdown blog (https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
 - [x] put credentials in env files
 - [x] make a wrapper for the db commands
-- [ ]
+- [x] add async loading animation until the requested data is processed from database
 - [ ]
 - [ ]
 - [ ]

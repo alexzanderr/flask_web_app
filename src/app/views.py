@@ -1,6 +1,7 @@
 
 from flask import render_template
 from flask import Blueprint
+from flask import request
 from .models import db
 from .models import User
 from .models import Address
@@ -9,7 +10,11 @@ from .models import YTUser
 from .models import YTChannel
 from .models import subs
 import sqlalchemy
+from time import time
 
+view = Blueprint("views", __name__)
+view = Blueprint("views", __name__)
+view = Blueprint("views", __name__)
 view = Blueprint("views", __name__)
 
 @view.route("/")
@@ -17,7 +22,30 @@ view = Blueprint("views", __name__)
 @view.route("/index")
 @view.route("/homesweethome")
 def index():
+	# return "livereload"
 	return render_template("index.html")
+
+from time import sleep
+
+def lazy_loading():
+	for i in range(3):
+		sleep(1)
+
+
+@view.route("/form", methods=["GET"])
+def form():
+	# query = request.form['anything']
+	# lazy_loading()
+	return render_template("loading.html")
+
+
+@view.route("/form", methods=["POST"])
+def form_post():
+	query = request.form['anything']
+	start_time = time()
+	lazy_loading()
+	diff = int(abs(start_time - time()))
+	return render_template("done.html", result=query, time_diff=diff)
 
 
 @view.route("/get/<int:var>")
