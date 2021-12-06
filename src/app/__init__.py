@@ -2,8 +2,15 @@
 from rich.traceback import install
 install(show_locals=False)
 
+# python
 import os
+from random import randint
+from datetime import datetime
+
+
 from flask import Flask
+from flask import url_for
+from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 # this is not yours, you can comment this
 # trebuie sa fie .crendetials cand esti in __init__.py
@@ -26,8 +33,8 @@ db = SQLAlchemy()
 # if auto commit is ON and you use
 # db.session.commit() -> it will raise error
 
-socketio = SocketIO(cors_allowed_origins="*")
-
+from .database_manager import Database
+from .socket_events import sc
 # this is the app factory design pattern
 # anyone that calls this function will get an app
 def create_app(test_config=None):
@@ -37,7 +44,11 @@ def create_app(test_config=None):
     flask_application = Flask(
         __name__,
         # with this all config will be in instance folder
-        instance_relative_config=True)
+        instance_relative_config=True,
+        static_url_path="",
+        static_folder="static",
+        template_folder="templates"
+    )
 
 
     # its working
@@ -48,13 +59,13 @@ def create_app(test_config=None):
     # trebuia sa avem track modifications ca sa putem sa dam db.init_app
     flask_application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-    flask_application.config["SECRET_KEY"] = "\x1d\x9f[x\x03\xb5d:\xff:\x13r\xe1\x81\xf1\xee\xec\x91c\xa0\xed\xc7Cv"
+    flask_application.config["SECRET_KEY"] = Credentials.SECRET_KEY
 
     # register flask app into sql alchemy
     db.init_app(flask_application)
 
-    # register flask app into socket io client
 
+    # register flask app into socket io client
 
 
 
@@ -106,9 +117,13 @@ def create_app(test_config=None):
     # the tutorial the blog will be the main index
     flask_application.add_url_rule("/", endpoint="index")
 
+    sc.init_app(flask_application)
 
 
-    socketio.init_app(flask_application)
+
+
+
+
     return flask_application
 
 

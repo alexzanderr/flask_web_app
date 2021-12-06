@@ -26,23 +26,51 @@
 - [x] add grafana as monitoring tool
 - [x] create a grafana dashboard with prometheus and prometheus node-exporter
 - [ ] how to create routes automatically from code at runtime
+- [x] automatically list all existing routes in the web at index.html
 - [ ] make 2 promethei instances to increase redundancy and reduce single point of failure
 - [ ] add alertmanager to prometheus
-- [ ] embbed your grafana apllication on your flask web app routes, example 'flaskapp.com/grafana' is this possible?
+- [x] embbed your grafana apllication on your flask web app routes, example 'flaskapp.com/grafana' is this possible? yes
 - [ ] how to export all your grafana config? its json config
 - [ ] install tempo for stack trace
 - [x] run flask app with gunicorn
-- [ ] redirect from nginx to gunicorn
-- [ ] flask logging (https://flask.palletsprojects.com/en/2.0.x/logging/)
-- [ ] https://thenishchalraj.medium.com/dynamically-embed-grafana-dashboards-in-a-react-component-483b9ecd1dcd
+- [ ] redirect from nginx to gunicorn (config nginx)
+- [ ] flask logging in file (https://flask.palletsprojects.com/en/2.0.x/logging/)
 
-- [ ] https://www.youtube.com/watch?v=Ct9PjmrExzo
+- [x] embedd grafana panel into this web application
+- [ ] embedd grafana dashboard with authentication credentials and live reload
 - [ ] async flask functions https://www.youtube.com/watch?v=0z74b3c63GA
-- [ ] how to test websocket in flask development server
 - [x] add websockets (flask_socketio)
 - [x] deploy with web sockets (gunicorn gevent worker)
 - [ ] test websockets in flask development server (socketio.run(), but its not working)
-- [ ] socketio its not working with the application factory moduel
+- [x] use socketio with application factory design pattern
+- [ ] add grafana in markdown (https://docs.gitlab.com/ee/operations/metrics/embed_grafana.html#use-grafana-rendered-images)
+- [ ] production recipes https://www.toptal.com/flask/flask-production-recipes
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 - [ ]
 - [ ]
 - [ ]
@@ -54,4 +82,3 @@
 
 
 
-- [ ] scale vertically

@@ -285,8 +285,15 @@ builds a python project from main python file, just like a compiler language
 - python full stack web development (flask, django, gunicorn, html, css, javascript, postgresql, redis, prometheus, grafana, docker, kubernetes)
 - python automation on linux servers + shell scripting
 - python webscraping on dynamic websites
+
 - python data science
 - python artificial intelligence
+
+
+# How do i see myself in 1/2 years
+- with doubled salary
+- with a lot of experience and knowledge
+
 
 
 # My Expectations from You
@@ -294,6 +301,8 @@ builds a python project from main python file, just like a compiler language
 - remote work (pentru ca stau departe de orice loc de munca)
 - use linux as main OS
 - use my linux tools
+- work in a great team with great people
+
 
 # Questions from me!
 - ce OS ?

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Copy Paste Neovim</title>
+    <link rel="icon" href="neovim.png" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="neovim.css" />
+    <style>
+    </style>
+</head>
+
+<body>
+    <article>
+        <h1>Copy and Paste just like in VSCode</h1>
+        <p>
+            in this article you will see how to configure neovim to use
+            control+C and control+V to copy and paste just like in vs code
+        </p>
+
+        <h3>check the youtube video right here</h3>
+        <p> if you dont want to see the video just scroll over </p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/emCMyD75DKI" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+
+        </iframe>
+
+        <h1>follow these steps to configure your neovim</h1>
+
+        <p>copy this file under
+            <strong>
+                ~/.config/nvim/lua/copy-paste.lua
+            </strong>
+            and import it in
+            <strong>
+                ~/.config/nvim/init.lua
+            </strong>
+            like so
+        <pre>
+                require("copy-paste.lua")
+            </pre>
+        </p>
+
+        <h3>copy-paste.lua</h3>
+        <pre class="shiki" style="background-color: #002b36"><code><span class="line"></span>
+<span class="line"><span style="color: #859900">local</span><span style="color: #93A1A1"> map </span><span style="color: #859900">=</span><span style="color: #93A1A1"> </span><span style="color: #859900">function</span><span style="color: #93A1A1">(mode, key, command)</span></span>
+<span class="line"><span style="color: #93A1A1">	vim.</span><span style="color: #268BD2">api</span><span style="color: #93A1A1">.</span><span style="color: #268BD2">nvim_set_keymap</span><span style="color: #93A1A1">(mode, key, command, {</span></span>
+<span class="line"><span style="color: #93A1A1">		noremap </span><span style="color: #859900">=</span><span style="color: #93A1A1"> </span><span style="color: #B58900">true</span><span style="color: #93A1A1">,</span></span>
+<span class="line"><span style="color: #93A1A1">		silent </span><span style="color: #859900">=</span><span style="color: #93A1A1"> </span><span style="color: #B58900">true</span></span>
+<span class="line"><span style="color: #93A1A1">	})</span></span>
+<span class="line"><span style="color: #859900">end</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #859900">function</span><span style="color: #93A1A1"> </span><span style="color: #268BD2">CopyCurrentLineToClipboard</span><span style="color: #93A1A1">()</span></span>
+<span class="line"><span style="color: #93A1A1">    </span><span style="color: #859900">local</span><span style="color: #93A1A1"> ft </span><span style="color: #859900">=</span><span style="color: #93A1A1"> vim.</span><span style="color: #268BD2">bo</span><span style="color: #93A1A1">.</span><span style="color: #268BD2">filetype</span></span>
+<span class="line"><span style="color: #93A1A1">    </span><span style="color: #859900">if</span><span style="color: #93A1A1"> ft </span><span style="color: #859900">==</span><span style="color: #93A1A1"> </span><span style="color: #2AA198">&quot;NvimTree&quot;</span><span style="color: #93A1A1"> </span><span style="color: #859900">then</span></span>
+<span class="line"><span style="color: #93A1A1">        </span><span style="color: #268BD2">require</span><span style="color: #2AA198">&quot;nvim-tree&quot;</span><span style="color: #93A1A1">.</span><span style="color: #268BD2">on_keypress</span><span style="color: #93A1A1">(</span><span style="color: #2AA198">&quot;copy_absolute_path&quot;</span><span style="color: #93A1A1">)</span></span>
+<span class="line"><span style="color: #93A1A1">    </span><span style="color: #859900">else</span></span>
+<span class="line"><span style="color: #93A1A1">		vim.</span><span style="color: #268BD2">cmd</span><span style="color: #93A1A1">(</span><span style="color: #2AA198">&quot;normal ^</span><span style="color: #CB4B16">\&quot;</span><span style="color: #2AA198">+y$&quot;</span><span style="color: #93A1A1">)</span></span>
+<span class="line"><span style="color: #93A1A1">    </span><span style="color: #859900">end</span></span>
+<span class="line"><span style="color: #859900">end</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #268BD2">map</span><span style="color: #93A1A1"> ( </span><span style="color: #2AA198">&quot;n&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;&lt;C-c&gt;&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;:lua CopyCurrentLineToClipboard()&lt;CR&gt;&quot;</span><span style="color: #93A1A1"> )</span></span>
+<span class="line"><span style="color: #268BD2">map</span><span style="color: #93A1A1"> ( </span><span style="color: #2AA198">&quot;i&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;&lt;C-c&gt;&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;&lt;C-o&gt;:lua CopyCurrentLineToClipboard()&lt;CR&gt;&quot;</span><span style="color: #93A1A1"> )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #268BD2">map</span><span style="color: #93A1A1"> ( </span><span style="color: #2AA198">&quot;v&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;&lt;C-c&gt;&quot;</span><span style="color: #93A1A1">, </span><span style="color: #2AA198">&quot;</span><span style="color: #CB4B16">\&quot;</span><span style="color: #2AA198">+ygv&quot;</span><span style="color: #93A1A1"> )</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+
+
+        <h3> copy-paste.vim</h3>
+        <!-- HTML generated using hilite.me -->
+
+        <p> here just put these lines under <strong>
+                ~/.config/nvim/init.vim
+            </strong>
+            doesnt matter, you can also import in init.vim this file using source
+        </p>
+        <div
+            style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+            <pre style="margin: 0; line-height: 125%"><span style="color: #204a87">nnoremap</span> <span style="color: #000000; font-weight: bold">&lt;</span>C<span style="color: #000000; font-weight: bold">-</span><span style="color: #204a87; font-weight: bold">c</span><span style="color: #000000; font-weight: bold">&gt;</span> ^&quot;<span style="color: #000000; font-weight: bold">+</span><span style="color: #204a87; font-weight: bold">y</span>$
+<span style="color: #204a87">inoremap</span> <span style="color: #000000; font-weight: bold">&lt;</span>C<span style="color: #000000; font-weight: bold">-</span><span style="color: #204a87; font-weight: bold">c</span><span style="color: #000000; font-weight: bold">&gt;</span> <span style="color: #000000; font-weight: bold">&lt;</span>C<span style="color: #000000; font-weight: bold">-</span><span style="color: #204a87; font-weight: bold">o</span><span style="color: #000000; font-weight: bold">&gt;</span>^&quot;<span style="color: #000000; font-weight: bold">+</span><span style="color: #204a87; font-weight: bold">y</span>$
+<span style="color: #204a87">vnoremap</span> <span style="color: #000000; font-weight: bold">&lt;</span>C<span style="color: #000000; font-weight: bold">-</span><span style="color: #204a87; font-weight: bold">c</span><span style="color: #000000; font-weight: bold">&gt;</span> <span style="color: #8f5902; font-style: italic">&quot;+ygv</span>
+</pre>
+        </div>
+
+    </article>
+</body>
+
+</html>

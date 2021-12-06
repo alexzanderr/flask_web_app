@@ -13,6 +13,7 @@ class BaseModel(db.Model):
 
 class Login(BaseModel):
     __tablename__ = "logins"
+    # __table_args__ = {'extend_existing': True}
     __id = db.Column("id", db.Integer, primary_key=True)
     __time = db.Column("time", db.DateTime, unique=True)
     value = db.Column("value", db.Integer)

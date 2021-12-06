@@ -1,7 +1,36 @@
 
-from flask import render_template
-from flask import Blueprint
+
+# python3
+from string import digits
+from random import randint
+from time import time, sleep
+from datetime import datetime
+import logging
+from flask import has_request_context, request
+from flask.logging import default_handler
+
+# flask package
+from flask import Flask
 from flask import request
+from flask import Blueprint
+# https://stackoverflow.com/questions/16994174/in-flask-how-to-access-app-logger-within-blueprint
+from flask import current_app
+from flask import render_template
+from flask import url_for, redirect
+# this is actually a very good way to access app
+
+# werkzeug
+from werkzeug.utils import import_string
+
+
+# sqlalchemy
+import sqlalchemy
+
+# flask socketio
+from flask_socketio import SocketIO, send
+
+# current project
+# ./src/app/models.py
 from .models import db
 from .models import User
 from .models import Address
@@ -10,48 +39,114 @@ from .models import YTUser
 from .models import YTChannel
 from .models import subs
 from .models import Login
-import sqlalchemy
-from time import time
-from flask_socketio import SocketIO, send
+# ./src/app/__init__.py
 from app import db
+# ./src/app/database_manager.py
 from .database_manager import Database
-from datetime import datetime
+from .credentials import Credentials
+
+
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        if has_request_context():
+            record.url = request.url
+            record.remote_addr = request.remote_addr
+        else:
+            record.url = None
+            record.remote_addr = None
+
+        return super().format(record)
 
 
 view = Blueprint("views", __name__)
-view = Blueprint("views", __name__)
-view = Blueprint("views", __name__)
-view = Blueprint("views", __name__)
 
-from string import digits
-from random import randint
+formatter = RequestFormatter(
+    '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+    '%(levelname)s in %(module)s: %(message)s'
+)
+default_handler.setFormatter(formatter)
 
 def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(10)])
 
+def get_all_routes():
+    routes = []
+    for rule in current_app.url_map.iter_rules():
+        try:
+            if rule.endpoint != 'static':
+                if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+                    import_name = current_app.view_functions[rule.endpoint].import_name
+                    obj = import_string(import_name)
+                    routes.append({rule.rule: "%s\n%s" % (",".join(list(rule.methods)), obj.__doc__)})
+                else:
+                    routes.append({rule.rule: current_app.view_functions[rule.endpoint].__doc__})
+        except Exception as exc:
+            routes.append({rule.rule:
+                           "(%s) INVALID ROUTE DEFINITION!!!" % rule.endpoint})
+            route_info = "%s => %s" % (rule.rule, rule.endpoint)
+            current_app.logger.error("Invalid route: %s" % route_info, exc_info=True)
+    return routes
+
+
+@view.route('/all', methods=['GET'])
+def routes_info():
+    return {"code":200, "data": get_all_routes()}
+
 
 @view.route("/")
+def index():
+    # return "livereload"
+    login = Login(datetime.now(), randint(0, 10000))
+    Database.add(login)
+    current_app.logger.error("some errors")
+
+
+    all_routes = get_all_routes()
+    # print(all_routes)
+    filtered_routes = [list(route.keys())[0] for route in all_routes]
+
+    return render_template("index.html", routes=filtered_routes)
+    # return "asd"
+
+
+
+
 @view.route("/home")
 @view.route("/index")
 @view.route("/homesweethome")
-def index():
-	# return "livereload"
-	login = Login(datetime.now(), randint(0, 10000))
-	Database.add(login)
-	return render_template("index.html")
+def redirect_to_index():
+	current_app.logger.info("something")
+	return redirect(url_for("index"))
 
-from time import sleep
 
-@view.route("/sock")
+
+@view.route("/chat")
 def sock():
-
+	current_app.logger.info("some errors")
 	return render_template("socket.html")
+
+
+@view.route("/stat")
+def stat():
+	return url_for("static", filename="ajax-loader.gif")
 
 
 def lazy_loading():
 	for i in range(3):
 		sleep(1)
 
+@view.route("/grafana")
+def load_grafana_ui():
+	return render_template("grafana.html", api_key=Credentials.GRAFANA_API_KEY)
+
+
+@view.route("/snippet")
+def load_snippet_html():
+	return render_template("snippet.html")
+
+# @view.route('/<path:file_path>')
+# def static_file(file_path):
+#     return view.send_static_file(file_path)
 
 @view.route("/form", methods=["GET"])
 def form():

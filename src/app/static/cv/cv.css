@@ -1,0 +1,68 @@
+
+
+
+.cv-li {
+    background-color: #182d30;
+    border-radius: 25px;
+	border-style: solid;
+	/*border-color: #b6bd53; */
+	border-color: greenyellow;
+    padding: 30px;
+    margin: 20px;
+    text-align: center;
+    /* asta face sa dispara punctele din fata la list item */
+    list-style-type: none;
+
+}
+
+.cv-a {
+    font-weight: bold;
+    font-size: 40px;
+    font-family: monaco, 'Courier New', Courier, monospace;
+    color: darkkhaki;
+    text-decoration: none;
+	border-color: red;
+}
+
+.cv-logo {
+    /* asta te ajuta sa iti centrezi imaginea impreuna cu textul */
+    /* vertical-align: middle; */
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    float: left;
+	border-color: red;
+}
+
+.cv-li:hover, .cv-a:hover {
+    color: #333;
+    border-radius: 20px;
+    background-color: greenyellow;
+}
+
+
+.goback-a {
+    color: darkkhaki;
+    background-color: #333;
+    text-align: center;
+    padding: 5px;
+    font-size: 30px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    width: 100%;
+}
+
+.download-cv-button {
+    color: #2B2B2B;
+    background-color: #EF5A5A;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: monaco, 'Courier New', Courier, monospace;
+    text-decoration: none;
+    border-radius: 15px;
+    border: none;
+
+}

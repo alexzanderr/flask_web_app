@@ -36,43 +36,13 @@
 		and these are some routes
 	</div>
 	<ul>
-		<li>
-			<a href="/form">
-				/form
-			</a>
-		</li>
-		<li>
-			<a href="/sock">
-				/sock
-			</a>
-		</li>
-		<li>
-			<a href="/api">
-				/api
-			</a>
-		</li>
-		<li>
-			<a href="/api/login">
-				/api/login
-			</a>
-		</li>
-		<li>
-			<a href="/json">
-				/json
-			</a>
-		</li>
-		<li>
-			<a href="/api/new-token">
-				/api/new-token
-			</a>
-		</li>
-		<li>
-			<a href="/new-user">
-				/new-user
-			</a>
-		</li>
-
+		{% for item in routes %}
+			<li>
+				<a href="{{item}}">
+					{{ item }}
+				</a>
+			 </li>
+		{% endfor %}
 	</ul>
 </body>
-
 </html>

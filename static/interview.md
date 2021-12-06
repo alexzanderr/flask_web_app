@@ -220,7 +220,7 @@ What to do and learn:
 		localhost:3000
 		needs data sources
 
-	elk-stack
+	elastic-stack
 		related with elastic search
 		its actually elastic stack - ELC - made of
 			elastic search
