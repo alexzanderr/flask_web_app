@@ -11,6 +11,17 @@ class BaseModel(db.Model):
     __abstract__ = True
 
 
+class Login(BaseModel):
+    __tablename__ = "logins"
+    __id = db.Column("id", db.Integer, primary_key=True)
+    __time = db.Column("time", db.DateTime, unique=True)
+    value = db.Column("value", db.Integer)
+
+    def __init__(self, time, value):
+        self.__time = time
+        self.value = value
+
+
 class User(BaseModel):
     __tablename__ = "users"
     __id = db.Column("id", db.Integer, primary_key=True)

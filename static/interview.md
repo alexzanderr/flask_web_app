@@ -1,10 +1,31 @@
 
+site reliability engineer mpos air:
+	https://metro.digital/join-us/offers/1309519
+
+	metro is huge and in over 25 countries
+	metro digital is developing software for them
+	has a long history of business to business (B2B)
+	M.POS air is a checkout solution, meaning payment
+		compute ammount to pay for every type of customer
+		performant invoicing
+
+	SREs are involved in delivery and production
+
+	production readness (monitoring)
+		they develope continuous monitoring and self-healing for production apps and environment
+
+	all phases of software engineering
+		inception to coding, testing, delivery, and operation
+		they need automation
+
+	seek out feedback from users while developing new features
+
+
+teams meeting:
+	https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_Y2E0NjZhYzYtNWQxMC00NTJhLWJmZDEtYzk5ZGRjNjEyMjg3%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%252264322308-09a9-47a3-8c1c-b82871d60568%2522%252c%2522Oid%2522%253a%252298880e57-c6d1-49fe-8dc2-0a1aea615d08%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=89135544-dab2-4d06-8b96-9e5678dbc81f&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true
+
 their products
 	https://metro.digital/products
-
-	TODO
-
-	make a list with these and learn about them
 
 
 quick description about
@@ -27,8 +48,7 @@ quick description about
 				- maintainability
 				- reliability
 
-Questions:
-- what do you mean by this "you will also be leading postmortems after major incidents" ? what kind of incidents? is this just a methafor?
+
 
 
 What to do and learn:
@@ -62,7 +82,7 @@ What to do and learn:
 			example:
 				docker build -t python:0.0.1 . (creates a python named image with version 0.0.1 from the Dockerfile located at current dir .)
 
-		 sudo docker run -d -p 27017-27019:27017-27019 --name mongodb mongo\n (pulls mongodb is not existent and runs it on ports bla bla )
+		 sudo docker run -d -p 27017-27019:27017-27019 --name mongodb mongo\n (pulls mongodb is not existent and runs it on ports range bla bla )
 
 
 
@@ -214,5 +234,30 @@ What to do and learn:
 
 
 	web security
+		2 factor auth
+		https, web site traffic encryption with ssl certificates
+		ddos protection, blocking tons of requests
+		firewall
+		authentication with tokens
+
+		never run a web app in development mode in production environments
+
+		web app code
+		the configuration of the web server
+		policies for creating and renewing passwords
+		client-side code
+
+		XSS - cross site scripting - be aware of that
+		sql injections
+		Cross-Site Request Forgery (CSRF)
+
+		clickjacking
+		direcotry traversal
+		file inclusion
+		command injection
+
+
 
 	
+Questions:
+- what do you mean by this "you will also be leading postmortems after major incidents" ? what kind of incidents? is this just a methafor?

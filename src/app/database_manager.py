@@ -18,6 +18,7 @@ class Database:
 	# def add(model: Type[BaseModelChild]):
 	def add(model):
 		try:
+			# db.create_all()
 			db.session.add(model)
 			db.session.commit()
 			return True

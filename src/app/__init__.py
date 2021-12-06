@@ -11,7 +11,7 @@ from .credentials import Credentials
 # for people who clone this repo
 # and uncomment this
 # from example_credentials import Credentials
-
+from flask_socketio import SocketIO
 # cand esti in __init__ si vrei sa importi
 # trebuie sa pui
 # from .Module import Class/Function (notice the dot before the Module)
@@ -25,6 +25,8 @@ db = SQLAlchemy()
     # "autoflush": True not working
 # if auto commit is ON and you use
 # db.session.commit() -> it will raise error
+
+socketio = SocketIO(cors_allowed_origins="*")
 
 # this is the app factory design pattern
 # anyone that calls this function will get an app
@@ -46,10 +48,12 @@ def create_app(test_config=None):
     # trebuia sa avem track modifications ca sa putem sa dam db.init_app
     flask_application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
+    flask_application.config["SECRET_KEY"] = "\x1d\x9f[x\x03\xb5d:\xff:\x13r\xe1\x81\xf1\xee\xec\x91c\xa0\xed\xc7Cv"
+
+    # register flask app into sql alchemy
     db.init_app(flask_application)
 
-
-
+    # register flask app into socket io client
 
 
 
@@ -103,6 +107,8 @@ def create_app(test_config=None):
     flask_application.add_url_rule("/", endpoint="index")
 
 
+
+    socketio.init_app(flask_application)
     return flask_application
 
 

@@ -213,3 +213,28 @@ gunicorn -w 8 -b localhost:9999 "app:create_app()"
 [2021-12-04 20:56:50 +0200] [4008305] [INFO] Booting worker with pid: 4008305
 ```
 done, you have 8 threads for your flask web app
+
+# deploy with gunicorn and websockets
+command that is actually working
+```shell
+gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1 -b localhost:9999 "app:create_app()"
+```
+
+command that doesnt work
+```shell
+gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 2 -b localhost:9999 "app:create_app()"
+```
+notice `-w 2`, thats why, it says
+```shell
+[2021-12-05 20:48:43 +0200] [399652] [INFO] Starting gunicorn 20.1.0
+[2021-12-05 20:48:43 +0200] [399652] [INFO] Listening at: http://127.0.0.1:9999 (399652)
+[2021-12-05 20:48:43 +0200] [399652] [INFO] Using worker: geventwebsocket.gunicorn.workers.GeventWebSocketWorker
+[2021-12-05 20:48:43 +0200] [399656] [INFO] Booting worker with pid: 399656
+[2021-12-05 20:48:44 +0200] [399663] [INFO] Booting worker with pid: 399663
+Invalid session HD_PFraDLOUuAV5zAAAA (further occurrences of this error will be logged with level INFO)
+Invalid session HsRmJHQMisTj-rGeAAAA (further occurrences of this error will be logged with level INFO)
+```
+invalid session ?????
+
+# configure nginx server to be as proxy for gunicorn server
+- [ ] this is actually a todo

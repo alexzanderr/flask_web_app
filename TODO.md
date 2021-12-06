@@ -31,20 +31,18 @@
 - [ ] embbed your grafana apllication on your flask web app routes, example 'flaskapp.com/grafana' is this possible?
 - [ ] how to export all your grafana config? its json config
 - [ ] install tempo for stack trace
-- [ ] run flask app with gunicorn
+- [x] run flask app with gunicorn
 - [ ] redirect from nginx to gunicorn
 - [ ] flask logging (https://flask.palletsprojects.com/en/2.0.x/logging/)
 - [ ] https://thenishchalraj.medium.com/dynamically-embed-grafana-dashboards-in-a-react-component-483b9ecd1dcd
 
 - [ ] https://www.youtube.com/watch?v=Ct9PjmrExzo
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] async flask functions https://www.youtube.com/watch?v=0z74b3c63GA
+- [ ] how to test websocket in flask development server
+- [x] add websockets (flask_socketio)
+- [x] deploy with web sockets (gunicorn gevent worker)
+- [ ] test websockets in flask development server (socketio.run(), but its not working)
+- [ ] socketio its not working with the application factory moduel
 - [ ]
 - [ ]
 - [ ]

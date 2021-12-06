@@ -9,13 +9,26 @@ from .models import Person
 from .models import YTUser
 from .models import YTChannel
 from .models import subs
+from .models import Login
 import sqlalchemy
 from time import time
+from flask_socketio import SocketIO, send
+from app import db
+from .database_manager import Database
+from datetime import datetime
+
 
 view = Blueprint("views", __name__)
 view = Blueprint("views", __name__)
 view = Blueprint("views", __name__)
 view = Blueprint("views", __name__)
+
+from string import digits
+from random import randint
+
+def generate_random_token():
+	return "".join([choice(ascii_letters + digits) for _ in range(10)])
+
 
 @view.route("/")
 @view.route("/home")
@@ -23,9 +36,17 @@ view = Blueprint("views", __name__)
 @view.route("/homesweethome")
 def index():
 	# return "livereload"
+	login = Login(datetime.now(), randint(0, 10000))
+	Database.add(login)
 	return render_template("index.html")
 
 from time import sleep
+
+@view.route("/sock")
+def sock():
+
+	return render_template("socket.html")
+
 
 def lazy_loading():
 	for i in range(3):

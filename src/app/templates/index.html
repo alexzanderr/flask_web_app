@@ -1,21 +1,78 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> welcome amigo </title>
+	<style>
+		#routes {
+			font-size: 18px;
+			font-style: italic;
+			color: darkkhaki;
+			border: solid;
+		}
+
+		a {
+			color: darkkhaki;
+			border: solid;
+			border-width: 1.5px;
+			border-radius: 5px;
+			background-color: #333;
+		}
+
+		li {
+			margin:  15px;
+			padding:  5;
+		}
+	</style>
 </head>
+
 <body>
 	<div>
-		hello world from template
+		this is index.html
 	</div>
-	<a href="/form">
-		go to loading button
-	</a>
+	<div id="routes">
+		and these are some routes
+	</div>
 	<ul>
-		<li>asd</li>
+		<li>
+			<a href="/form">
+				/form
+			</a>
+		</li>
+		<li>
+			<a href="/sock">
+				/sock
+			</a>
+		</li>
+		<li>
+			<a href="/api">
+				/api
+			</a>
+		</li>
+		<li>
+			<a href="/api/login">
+				/api/login
+			</a>
+		</li>
+		<li>
+			<a href="/json">
+				/json
+			</a>
+		</li>
+		<li>
+			<a href="/api/new-token">
+				/api/new-token
+			</a>
+		</li>
+		<li>
+			<a href="/new-user">
+				/new-user
+			</a>
+		</li>
 
 	</ul>
-
 </body>
+
 </html>
