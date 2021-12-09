@@ -47,66 +47,68 @@ from .credentials import Credentials
 
 
 class RequestFormatter(logging.Formatter):
-    def format(self, record):
-        if has_request_context():
-            record.url = request.url
-            record.remote_addr = request.remote_addr
-        else:
-            record.url = None
-            record.remote_addr = None
+	def format(self, record):
+		if has_request_context():
+			record.url = request.url
+			record.remote_addr = request.remote_addr
+		else:
+			record.url = None
+			record.remote_addr = None
 
-        return super().format(record)
+		return super().format(record)
 
 
 view = Blueprint("views", __name__)
 
-formatter = RequestFormatter(
-    '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
-    '%(levelname)s in %(module)s: %(message)s'
-)
-default_handler.setFormatter(formatter)
+# formatter = RequestFormatter(
+#     '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+#     '%(levelname)s in %(module)s: %(message)s'
+# )
+# default_handler.setFormatter(formatter)
+# default_handler.setLevel(logging.INFO)
+# logging.basicConfig(filename='src/logs/info.log',level=logging.INFO)
 
 def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(10)])
 
 def get_all_routes():
-    routes = []
-    for rule in current_app.url_map.iter_rules():
-        try:
-            if rule.endpoint != 'static':
-                if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
-                    import_name = current_app.view_functions[rule.endpoint].import_name
-                    obj = import_string(import_name)
-                    routes.append({rule.rule: "%s\n%s" % (",".join(list(rule.methods)), obj.__doc__)})
-                else:
-                    routes.append({rule.rule: current_app.view_functions[rule.endpoint].__doc__})
-        except Exception as exc:
-            routes.append({rule.rule:
-                           "(%s) INVALID ROUTE DEFINITION!!!" % rule.endpoint})
-            route_info = "%s => %s" % (rule.rule, rule.endpoint)
-            current_app.logger.error("Invalid route: %s" % route_info, exc_info=True)
-    return routes
+	routes = []
+	for rule in current_app.url_map.iter_rules():
+		try:
+			if rule.endpoint != 'static':
+				if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+					import_name = current_app.view_functions[rule.endpoint].import_name
+					obj = import_string(import_name)
+					routes.append({rule.rule: "%s\n%s" % (",".join(list(rule.methods)), obj.__doc__)})
+				else:
+					routes.append({rule.rule: current_app.view_functions[rule.endpoint].__doc__})
+		except Exception as exc:
+			routes.append({rule.rule:
+						   "(%s) INVALID ROUTE DEFINITION!!!" % rule.endpoint})
+			route_info = "%s => %s" % (rule.rule, rule.endpoint)
+			current_app.logger.error("Invalid route: %s" % route_info, exc_info=True)
+	return routes
 
 
 @view.route('/all', methods=['GET'])
 def routes_info():
-    return {"code":200, "data": get_all_routes()}
+	return {"code":200, "data": get_all_routes()}
 
 
 @view.route("/")
 def index():
-    # return "livereload"
-    login = Login(datetime.now(), randint(0, 10000))
-    Database.add(login)
-    current_app.logger.error("some errors")
+	# return "livereload"
+	login = Login(datetime.now(), randint(0, 10000))
+	Database.add(login)
+	current_app.logger.info("some errors")
 
 
-    all_routes = get_all_routes()
-    # print(all_routes)
-    filtered_routes = [list(route.keys())[0] for route in all_routes]
+	all_routes = get_all_routes()
+	# print(all_routes)
+	filtered_routes = [list(route.keys())[0] for route in all_routes]
 
-    return render_template("index.html", routes=filtered_routes)
-    # return "asd"
+	return render_template("index.html", routes=filtered_routes)
+	# return "asd"
 
 
 
@@ -119,10 +121,20 @@ def redirect_to_index():
 	return redirect(url_for("index"))
 
 
+# this is not working
+# @view.route("/new-route")
+# def create_new_route_at_runtime():
+
+# 	route_name = "/random"
+# 	@current_app.route(route_name)
+# 	def custom_route():
+# 		return "hello world im created at runtime"
+# 	return "created new-route"
+
 
 @view.route("/chat")
 def sock():
-	current_app.logger.info("some errors")
+	# current_app.logger.info("some errors")
 	return render_template("socket.html")
 
 
@@ -239,43 +251,43 @@ def random_string(length: int):
 
 @view.route("/new-user")
 def add_new_user():
-    __username=random_string(10),
-    __password=random_string(20),
-    __name=random_string(10),
-    __age=randint(1, 100000),
-    __address=random_string(20)
+	__username=random_string(10),
+	__password=random_string(20),
+	__name=random_string(10),
+	__age=randint(1, 100000),
+	__address=random_string(20)
 
-    # check unicity for username
-    check = User.query.filter_by(username=__username).first()
-    while check is not None:
-        # reload until unique
-        __username=random_string(10),
-        check = User.query.filter_by(username=__username).first()
+	# check unicity for username
+	check = User.query.filter_by(username=__username).first()
+	while check is not None:
+		# reload until unique
+		__username=random_string(10),
+		check = User.query.filter_by(username=__username).first()
 
 
-    # check unicity for address
-    check = User.query.filter_by(address=__address).first()
-    while check is not None:
-        # reload until unique
-        __address=random_string(20),
-        check = User.query.filter_by(address=__address).first()
+	# check unicity for address
+	check = User.query.filter_by(address=__address).first()
+	while check is not None:
+		# reload until unique
+		__address=random_string(20),
+		check = User.query.filter_by(address=__address).first()
 
-    # check unicity for address
-    check = User.query.filter_by(age=__age).first()
-    while check is not None:
-        # reload until unique
-        __age=randint(0, 1000000),
-        check = User.query.filter_by(age=__age).first()
+	# check unicity for address
+	check = User.query.filter_by(age=__age).first()
+	while check is not None:
+		# reload until unique
+		__age=randint(0, 1000000),
+		check = User.query.filter_by(age=__age).first()
 
-    user = User(
-        username=__username,
-        password=__password,
-        name=__name,
-        age=__age,
-        address=__address,
-    )
-    db.session.add(user)
-    return render_template("users.html", response=user.to_json())
+	user = User(
+		username=__username,
+		password=__password,
+		name=__name,
+		age=__age,
+		address=__address,
+	)
+	db.session.add(user)
+	return render_template("users.html", response=user.to_json())
 
 
 
@@ -283,45 +295,45 @@ def add_new_user():
 
 @view.route("/users")
 def list_users():
-    results = db.session.execute("select * from users").fetchall()
+	results = db.session.execute("select * from users").fetchall()
 
-    lines = "<ul>"
-    for line in results:
-        lines += "<li>" + str(line) + '</li>'
-    lines += "</ul>"
-    return lines
+	lines = "<ul>"
+	for line in results:
+		lines += "<li>" + str(line) + '</li>'
+	lines += "</ul>"
+	return lines
 
 
 @view.route("/users2")
 def list_users2():
-    results = User.query.filter_by(username="missing").first_or_404(description="there is no data with user missing")
-    return results
+	results = User.query.filter_by(username="missing").first_or_404(description="there is no data with user missing")
+	return results
 
-    if results is None:
-        return "no username missing in db"
-    lines = "<ul>"
-    for line in results:
-        lines += "<li>" + str(line) + '</li>'
-    lines += "</ul>"
-    return lines
+	if results is None:
+		return "no username missing in db"
+	lines = "<ul>"
+	for line in results:
+		lines += "<li>" + str(line) + '</li>'
+	lines += "</ul>"
+	return lines
 
 
 @view.route("/new-person/<string:name>")
 def add_new_person(name: str):
-    __person = Person(name=name)
+	__person = Person(name=name)
 
-    address1 = Address(
-        "justpythonmailtest@gmail.com")
-    address2 = Address(
-        "aiosdbjfasidbfg@yahoo.com")
-    for address in [address1, address2]:
-        address.person = __person
+	address1 = Address(
+	  "justpythonmailtest@gmail.com")
+	address2 = Address(
+	  "aiosdbjfasidbfg@yahoo.com")
+	for address in [address1, address2]:
+	  address.person = __person
 
-    db.session.add(__person)
-    db.session.add(address1)
-    db.session.add(address2)
+	db.session.add(__person)
+	db.session.add(address1)
+	db.session.add(address2)
 
-    return f"person: {name} added to database"
+	return f"person: {name} added to database"
 
 
 @view.route("/many")
@@ -376,7 +388,8 @@ def get_many_relations():
 def error():
 	try:
 		user = User(
-			"anddrew", "asdasd", "asdasdasd", 100, "asdasd")
+			"anddrew", "asdasd", "asdasdasd", 100, "asdasd"
+		)
 		db.session.add(user)
 	except sqlalchemy.exc.IntegrityError as error:
 		return {

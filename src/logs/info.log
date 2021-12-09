@@ -1,0 +1,230 @@
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py', reloading
+INFO:werkzeug: * Running on http://127.0.0.1:5555/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 22:59:45] "[33mGET /new-route HTTP/1.1[0m" 404 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 22:59:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:45] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:45] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:45] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:46] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:46] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:46] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:46] "GET / HTTP/1.1" 200 -
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2021 23:02:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5555/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 13:37:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 13:37:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/__init__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://127.0.0.1:5555/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+ERROR:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:40] code 400, message Bad request syntax ('ÿôÿý\x06ÿôÿý\x06')
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:40] "[35m[1mÿôÿýÿôÿý[0m" HTTPStatus.BAD_REQUEST -
+ERROR:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:49] code 400, message Bad request syntax ('a')
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:49] "[35m[1ma[0m" HTTPStatus.BAD_REQUEST -
+ERROR:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:59] code 400, message Bad request syntax ('/chat')
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 21:00:59] "[35m[1m/chat[0m" HTTPStatus.BAD_REQUEST -
+ERROR:werkzeug:127.0.0.1 - - [07/Dec/2021 21:01:06] code 400, message Bad request syntax ('asd')
+INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 21:01:06] "[35m[1masd[0m" HTTPStatus.BAD_REQUEST -
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/programming/python3/core/tests/test_time__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://127.0.0.1:5555/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:src.app:some errors
+ERROR:src.app:Invalid route: / => index
+Traceback (most recent call last):
+  File "/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py", line 79, in get_all_routes
+    if hasattr(current_app.view_functions[rule.endpoint], 'import_name'):
+KeyError: 'index'
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 14:44:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 14:44:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 21:54:10] "GET /api/login?token=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 21:55:02] "GET /api/login?token=s72EDRvyMxj769OZGYso6frUbPByBP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 21:55:10] "GET /api/login?token=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2021 21:55:15] "[33mGET /cat HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in '/home/alexzander/Alexzander__/interview/metro.digital/src/app/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat

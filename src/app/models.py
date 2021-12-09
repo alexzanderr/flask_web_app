@@ -5,24 +5,25 @@
 import json
 from flask_sqlalchemy import SQLAlchemy
 
+
 from app import db
 
-class BaseModel(db.Model):
+class BaseModel(db.Model): # type: ignore
     __abstract__ = True
 
 
 class Login(BaseModel):
     __tablename__ = "logins"
     # __table_args__ = {'extend_existing': True}
-    __id = db.Column("id", db.Integer, primary_key=True)
-    __time = db.Column("time", db.DateTime, unique=True)
-    value = db.Column("value", db.Integer)
+    __id = db.Column("id", db.Integer, primary_key=True) # type: ignore
+    __time = db.Column("time", db.DateTime, unique=True) # type: ignore
+    value = db.Column("value", db.Integer) # type: ignore with this you get your error ignored by language server
 
     def __init__(self, time, value):
         self.__time = time
         self.value = value
 
-
+# pyright: disable
 class User(BaseModel):
     __tablename__ = "users"
     __id = db.Column("id", db.Integer, primary_key=True)
@@ -118,3 +119,5 @@ class YTChannel(BaseModel):
     name = db.Column("name", db.String(20))
 
     # subscribers will be here with that above backref
+
+# pyright: enable

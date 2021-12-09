@@ -261,3 +261,53 @@ What to do and learn:
 	
 Questions:
 - what do you mean by this "you will also be leading postmortems after major incidents" ? what kind of incidents? is this just a methafor?
+
+
+# learn about QA Automation Engineering (quality assurance)
+
+## qa techniques
+- auditing (regular inspection to see if products match requirements)
+- reviewing (A meeting in which the software product is examined by both the internal and external stakeholders to seek their comments and approval)
+- code inspection (actual testing; The reviewer should not be the author of the code, lol)
+- design inspection ( Design inspection is done using a checklist that inspects the below areas of software design: )
+
+    General requirements and design
+    Functional and Interface specifications
+    Conventions
+    Requirement traceability
+    Structures and interfaces
+    Logic
+    Performance
+    Error handling and recovery
+    Testability, extensibility
+    Coupling and cohesion
+- Simulation: Simulation is a tool that models the real-life situation in order to virtually examine the behavior of the system under study.
+- Functional Testing: It is a QA technique which verifies what the system does without considering how it does. This type of black box testing mainly focuses on testing the system specifications or features.
+- Standardization: Standardization plays a crucial role in quality assurance. It decreases the ambiguity and guesswork, thus ensuring quality.
+- Static Analysis: It is a software analysis that is done by an automated tool without actually executing the program. This technique is highly used for quality assurance in medical, nuclear and aviation software. Software metrics and reverse engineering are some popular forms of static analysis.
+- Walkthroughs: Software walkthrough or code walkthrough is a kind of peer review where the developer guides the members of the development team to go through the product and raise queries, suggest alternatives, make comments regarding possible errors, standard violations or any other issues.
+- Path Testing: It is a white box testing technique where the complete branch coverage is ensured by executing each independent path at least once.
+- Stress Testing: This type of testing is done to check how robust a system is by testing it under heavy load i.e. beyond normal conditions.
+- Six Sigma: Six Sigma is a quality assurance approach that aims at nearly perfect products or services. It is widely applied in many fields including software. The main objective of six sigma is process improvement so that the produced software is 99.76 % defect free.
+
+## qa principles
+1. customer focus
+2. leardership
+3. engagement people
+4. process approach
+5. improvement
+6. evidence based decision making
+7. relationship management
+
+## qa methodologies
+Software engineering Standards
+Technical reviews and audits
+Software Testing for quality control
+Error collection and analysis
+Change management
+Educational programs
+Vendor management
+Security management
+Safety
+Risk management
+

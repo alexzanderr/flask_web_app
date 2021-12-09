@@ -284,10 +284,9 @@ builds a python project from main python file, just like a compiler language
 # Conclusions / What can I do? (the only things i want to do)
 - python full stack web development (flask, django, gunicorn, html, css, javascript, postgresql, redis, prometheus, grafana, docker, kubernetes)
 - python automation on linux servers + shell scripting
+- python QA Automation Engineer
 - python webscraping on dynamic websites
 
-- python data science
-- python artificial intelligence
 
 
 # How do i see myself in 1/2 years

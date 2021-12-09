@@ -11,6 +11,8 @@
 - [ ] create cluster of this web app
 - [ ] test jenkins
 - [ ] use redis for caching
+- [ ] flask caching
+- [ ] add ipstack API for logging data about incoming IPs
 - [ ] make another client used as broker
 - [ ] deploy using ngnix and guvicorn (WSGI web app)
 - [ ] implement cookies
@@ -45,10 +47,10 @@
 - [x] use socketio with application factory design pattern
 - [ ] add grafana in markdown (https://docs.gitlab.com/ee/operations/metrics/embed_grafana.html#use-grafana-rendered-images)
 - [ ] production recipes https://www.toptal.com/flask/flask-production-recipes
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] dynamically generate routes https://stackoverflow.com/questions/38417563/dynamically-generate-flask-routes
+- [ ] grafana public data for users, for example total requests or requests per second
+- [ ] add /api/coins with Auth
+- [ ] use stripe payment solutions, ofc test localhost first (https://stripe.com/docs/api?lang=python)
 - [ ]
 - [ ]
 - [ ]

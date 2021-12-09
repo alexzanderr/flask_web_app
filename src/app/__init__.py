@@ -27,7 +27,7 @@ from flask_socketio import SocketIO
 
 # this is here to have multiple models with the same db
 # https://stackoverflow.com/questions/28284365/how-do-i-reference-multiple-models-in-flask
-db = SQLAlchemy()
+db: SQLAlchemy = SQLAlchemy()
     # "autocommit": True,
     # "autoflush": True not working
 # if auto commit is ON and you use
