@@ -1,4 +1,6 @@
 
+from rich.traceback import install
+install(show_locals=False)
 
 from flask_socketio import SocketIO
 from src.app import create_app

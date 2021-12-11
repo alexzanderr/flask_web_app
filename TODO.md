@@ -51,7 +51,7 @@
 - [ ] grafana public data for users, for example total requests or requests per second
 - [ ] add /api/coins with Auth
 - [ ] use stripe payment solutions, ofc test localhost first (https://stripe.com/docs/api?lang=python)
-- [ ]
+- [x] use mongodb
 - [ ]
 - [ ]
 - [ ]

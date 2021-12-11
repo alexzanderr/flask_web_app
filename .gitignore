@@ -8,3 +8,4 @@ app/__pycache__
 credentials.py
 instance
 *.sublime-*
+simulation

@@ -46,6 +46,8 @@ from .database_manager import Database
 from .credentials import Credentials
 
 
+
+
 class RequestFormatter(logging.Formatter):
 	def format(self, record):
 		if has_request_context():
@@ -68,8 +70,27 @@ view = Blueprint("views", __name__)
 # default_handler.setLevel(logging.INFO)
 # logging.basicConfig(filename='src/logs/info.log',level=logging.INFO)
 
+
+from random import randint
+
 def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(10)])
+
+@view.route("/mongo/new-prod")
+def new_product_route():
+	from .mongo_models import NewProduct, Product
+	newp = Product(name=generate_random_token(), price=randint(0, 1000))
+	newp.save()
+
+
+	return {
+		"name": newp.name,
+		"price": newp.price,
+		# totusi, este un Document object si se vede save
+		# dar nu are _session atunci cand apelezi save()
+		"dir": dir(newp)
+	}
+
 
 def get_all_routes():
 	routes = []
