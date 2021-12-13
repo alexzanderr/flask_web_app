@@ -12,6 +12,7 @@
 - [ ] test jenkins
 - [ ] use redis for caching
 - [ ] flask caching
+- [ ] change code base and use more flask modules
 - [ ] add ipstack API for logging data about incoming IPs
 - [ ] make another client used as broker
 - [ ] deploy using ngnix and guvicorn (WSGI web app)
@@ -27,7 +28,9 @@
 - [ ] implement logs and add logs collection tools
 - [x] add grafana as monitoring tool
 - [x] create a grafana dashboard with prometheus and prometheus node-exporter
-- [ ] how to create routes automatically from code at runtime
+- [x] how to create routes automatically from code at runtime, thats is not possible, the best you can do is /route/$param and param is variable, because you are getting this error: AssertionError: A setup function was called after the first request was handled. This usually indicates a bug in the application where a module was not imported and decorators or other functionality was called too late.
+To fix this make sure to import all your view modules, database models, and everything related at a central place before the application starts serving requests.
+
 - [x] automatically list all existing routes in the web at index.html
 - [ ] make 2 promethei instances to increase redundancy and reduce single point of failure
 - [ ] add alertmanager to prometheus
@@ -53,12 +56,11 @@
 - [ ] use stripe payment solutions, ofc test localhost first (https://stripe.com/docs/api?lang=python)
 - [x] use mongodb
 - [ ] add custom 404 HTML template for website
-- [ ] ajax post response from ui to backend https://stackoverflow.com/questions/26079754/flask-how-to-return-a-success-status-code-for-ajax-call
+- [x] ajax post response from ui to backend
 - [x] add todo app at route /todos
-- [ ] make the todo app better by not refreshing and redirecting every time when you add or delete a todo item (use ajax)
-- [ ]
-- [ ]
-- [ ]
+- [x] make the todo app better by not refreshing and redirecting every time when you add or delete a todo item (use ajax) (now its far more better and faster)
+- [x] filter todo input results (if is "" then reject it)
+- [ ] how to make browser auto refresh from jquery
 - [ ]
 - [ ]
 - [ ]

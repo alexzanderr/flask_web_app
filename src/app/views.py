@@ -76,20 +76,6 @@ from random import randint
 def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(10)])
 
-@view.route("/mongo/new-prod")
-def new_product_route():
-	from .mongo_models import NewProduct, Product
-	newp = Product(name=generate_random_token(), price=randint(0, 1000))
-	newp.save()
-
-
-	return {
-		"name": newp.name,
-		"price": newp.price,
-		# totusi, este un Document object si se vede save
-		# dar nu are _session atunci cand apelezi save()
-		"dir": dir(newp)
-	}
 
 
 def get_all_routes():
@@ -110,6 +96,20 @@ def get_all_routes():
 			current_app.logger.error("Invalid route: %s" % route_info, exc_info=True)
 	return routes
 
+
+
+# that is not possible
+"""
+AssertionError: A setup function was called after the first request was handled. This usually indicates a bug in the application where a module was not imported and decorators or other functionality was called too late.
+To fix this make sure to import all your view modules, database models, and everything related at a central place before the application starts serving requests.
+"""
+# def just_a_view_function():
+# 	return render_template("index.html")
+
+# @view.route("/newroute/<name>")
+# def newroute_at_runtime(name):
+# 	current_app.add_url_rule(f"/custom/{name}", view_func=just_a_view_function)
+# 	return "route created"
 
 @view.route('/all', methods=['GET'])
 def routes_info():
@@ -254,7 +254,7 @@ def return_json_response():
 			}
 		]
 	}
-	return data
+	return data, 200, {"ContentType": "application/json"}
 
 
 # @view.route("/submit", methods=["GET", "POST"])

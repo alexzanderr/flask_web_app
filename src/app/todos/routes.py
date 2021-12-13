@@ -1,4 +1,8 @@
-
+"""
+	# type: ignore
+	type ignore is to tell LSP-pyright to ignore the line
+	because something it thinks that there are errors, but actually at runtime there are not
+"""
 
 from json import dumps
 from flask import render_template
@@ -37,6 +41,9 @@ if not collection_exists(todos_collection_name):
 		raise ValueError(f"could not create collection: {todos_collection_name}")
 
 
+
+
+
 @todos.route("/")
 def todos_root():
 	todos_collection = get_collection(todos_collection_name)
@@ -65,8 +72,6 @@ def list_mongo():
 	# return str(dir(testing_collection.find({"kymycJScNC" : 9261})))
 
 
-
-
 @todos.route("/mongo/add", methods=["POST"])
 def mongo_add():
 	todos_collection = get_collection(todos_collection_name)
@@ -82,11 +87,7 @@ def mongo_add():
 	# return dict(todo), {
 	# 	"Refresh": "1; url={}".format(url_for("todos"))
 	# }
-	return redirect(url_for("todos"))
-
-
-
-
+	return redirect("/todos")
 
 
 
@@ -109,7 +110,7 @@ def mongo_complete(oid):
 	# 61b6247e165b109454a32c1b
 	# 61b6247e165b109454a32c1b
 
-	return redirect(url_for("todos"))
+	return redirect("/todos")
 
 
 @todos.route("/mongo/delete/<oid>")
@@ -135,3 +136,71 @@ def mongo_delete_all():
 
 
 
+todos_api = Blueprint(
+	"todos_api",
+	__name__,
+	url_prefix="/todos/api")
+
+@todos_api.route("/")
+def todos_api_root():
+	return { "message": "salutare" }, 200
+
+
+@todos_api.route("/mongo/add", methods=["POST"])
+def todos_api_mongo_add():
+	todos_collection = get_collection(todos_collection_name)
+
+	json_from_request = request.get_json()
+
+	todo = {
+		"text": json_from_request["text"], # type: ignore
+		"timestamp": datetime.timestamp(datetime.now()),
+		"datetime": datetime.now().strftime("%d.%m.%Y-%H:%M:%S"),
+		"completed": False
+	}
+	todos_collection.insert_one(todo)
+	# the above function insert a _id key
+
+	todo["oid"] = str(todo["_id"])
+	del todo["_id"]
+
+	return json_response(todo, 200)
+
+
+# PATCH request
+# The PATCH method applies partial modifications to a resource
+# meaning that in this case partial mods are todo completed == true
+@todos_api.route("/mongo/complete/<oid>", methods=["PATCH"])
+def todos_api_mongo_complete(oid):
+	todos_collection = get_collection(todos_collection_name)
+	requested_todo = todos_collection.find_one({
+		"_id": ObjectId(oid)
+	})
+	completed = True
+	if requested_todo["completed"]: # type: ignore
+		completed = False
+
+	todos_collection.update_one(
+		requested_todo,
+		{"$set": { "completed": completed }}
+	)
+	requested_todo["oid"] = str(requested_todo["_id"]) # type: ignore
+	requested_todo["completed"] = completed # type: ignore
+
+	del requested_todo["_id"] # type: ignore
+
+	return json_response(requested_todo, 200) # type: ignore
+
+
+
+@todos_api.route("/mongo/delete/<oid>", methods=["DELETE"])
+def todos_api_mongo_delete(oid):
+	todos_collection = get_collection(todos_collection_name)
+	requested_todo = todos_collection.find_one({
+		"_id": ObjectId(oid)
+	})
+	todos_collection.delete_one(requested_todo)
+	requested_todo["oid"] = str(requested_todo["_id"]) # type: ignore
+	del requested_todo["_id"] # type: ignore
+
+	return json_response(requested_todo, 200) # type: ignore

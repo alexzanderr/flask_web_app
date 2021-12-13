@@ -124,15 +124,19 @@ def create_app(test_config=None):
     from .api.views import api
     flask_application.register_blueprint(api)
 
-    from .todos.routes import todos
+    from .todos.routes import todos, todos_api
     flask_application.register_blueprint(todos)
+    flask_application.register_blueprint(todos_api)
 
     # make url_for('index') == url_for('blog.index')
     # in another app, you might define a separate main index here with
     # app.route, while giving the blog blueprint a url_prefix, but for
     # the tutorial the blog will be the main index
     flask_application.add_url_rule("/", endpoint="index")
-    flask_application.add_url_rule("/todos", endpoint="todos")
+    # aparent nu ai nevoie de asta
+    # flask_application.add_url_rule("/todos", endpoint="todos")
+
+
 
     # init socket io with our flask app
     sc.init_app(flask_application)

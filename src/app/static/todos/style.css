@@ -74,7 +74,7 @@
 .todo-completed {
 	text-decoration: line-through black;
 	text-decoration-thickness: 2px;
-	color: var(--one-dark-yellow);
+	/*color: var(--one-dark-yellow);*/
 }
 
 
