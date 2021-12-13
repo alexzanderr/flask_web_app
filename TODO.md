@@ -52,11 +52,10 @@
 - [ ] add /api/coins with Auth
 - [ ] use stripe payment solutions, ofc test localhost first (https://stripe.com/docs/api?lang=python)
 - [x] use mongodb
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] add custom 404 HTML template for website
+- [ ] ajax post response from ui to backend https://stackoverflow.com/questions/26079754/flask-how-to-return-a-success-status-code-for-ajax-call
+- [x] add todo app at route /todos
+- [ ] make the todo app better by not refreshing and redirecting every time when you add or delete a todo item (use ajax)
 - [ ]
 - [ ]
 - [ ]

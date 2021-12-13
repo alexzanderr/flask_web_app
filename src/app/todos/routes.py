@@ -1,18 +1,47 @@
 
 
-from flask import render_template, Blueprint
-from ..mongodb_client import mongodb, CollectionInvalid
+from json import dumps
+from flask import render_template
+from flask import Blueprint
+from flask import request
+from flask import url_for
+from flask import redirect
+
+
+# mongo db client stuff
+from ..mongodb_client import mongodb
+from ..mongodb_client import CollectionInvalid
+from ..mongodb_client import ObjectId
+from ..mongodb_client import collection_exists
+from ..mongodb_client import get_db_name
+from ..mongodb_client import collection_create
+from ..mongodb_client import get_collection
+from ..routes_utils import json_response
 
 from string import ascii_letters
 from random import choice, randint
 from datetime import datetime
 
 
-todos = Blueprint("todos", __name__, url_prefix="/todos")
+todos = Blueprint(
+	"todos",
+	__name__,
+	url_prefix="/todos",
+	# not working
+	# template_folder="templates/todos"
+)
+todos_collection_name = "todos"
+if not collection_exists(todos_collection_name):
+	result = collection_create(todos_collection_name)
+	if not result:
+		raise ValueError(f"could not create collection: {todos_collection_name}")
+
 
 @todos.route("/")
 def todos_root():
-	return "this is the root of /todos"
+	todos_collection = get_collection(todos_collection_name)
+	todo_list = todos_collection.find()
+	return render_template("todos/index.html", todo_list=todo_list)
 
 
 @todos.route("/help")
@@ -20,58 +49,89 @@ def help():
 	return "you just got some help"
 
 
-
-
 @todos.route("/mongo/list")
 # TODO find out how to list all
 def list_mongo():
-  testing_collection = mongodb.db.get_collection("testing")
-  return str(dir(testing_collection.find({"kymycJScNC" : 9261})))
+	items = []
+	testing_collection = mongodb.db.get_collection("testing")
+	for item in testing_collection.find():
+		without_id = {}
+		for key, v in item.items():
+			if key != "_id":
+				without_id.update({key: v})
+
+		items.append(without_id)
+	return dumps(items, indent=4)
+	# return str(dir(testing_collection.find({"kymycJScNC" : 9261})))
 
 
 
-@todos.route("/mongo/add")
+
+@todos.route("/mongo/add", methods=["POST"])
 def mongo_add():
-  try:
-    testing_collection = mongodb.db.create_collection("testing")
-  except CollectionInvalid:
-    # collection exists
-    testing_collection = mongodb.db.get_collection("testing")
+	todos_collection = get_collection(todos_collection_name)
 
-  for _ in range(5):
-    testing_collection.insert_one({
-    	"".join([choice(ascii_letters) for _ in range(10)]): randint(0, 10000),
-    # 	"""
-    # 		{ "_id" : ObjectId("61b4bcb898da5516ea364ce9"), "testing" : true }
-				# { "_id" : ObjectId("61b4c15bc58d07cb2b6ae9b4"), "aqvEFuvlDg" : 1834 }
-				# { "_id" : ObjectId("61b4c15bc58d07cb2b6ae9b5"), "xFCaVgGZDQ" : 478 }
-				# { "_id" : ObjectId("61b4c15bc58d07cb2b6ae9b6"), "yeCqzzwRhM" : 1117 }
-				# { "_id" : ObjectId("61b4c15bc58d07cb2b6ae9b7"), "ScgZqztzpY" : 3990 }
-				# { "_id" : ObjectId("61b4c15bc58d07cb2b6ae9b8"), "rPQeNxijSt" : 8134 }
-				# { "_id" : ObjectId("61b4c1b1c58d07cb2b6ae9b9"), "lKBNlRKlNI" : 9777 }
-				# { "_id" : ObjectId("61b4c1b1c58d07cb2b6ae9ba"), "NPJHlHufSA" : 3004 }
-				# { "_id" : ObjectId("61b4c1b1c58d07cb2b6ae9bb"), "QLkXIsaQVU" : 5751 }
-				# { "_id" : ObjectId("61b4c1b1c58d07cb2b6ae9bc"), "hwJGRyOLhN" : 683 }
-				# { "_id" : ObjectId("61b4c1b1c58d07cb2b6ae9bd"), "CjyFHozngt" : 9045 }
-				# { "_id" : ObjectId("61b4c213c58d07cb2b6ae9be"), "IFIGQAduni" : 7262 }
-				# { "_id" : ObjectId("61b4c213c58d07cb2b6ae9bf"), "ODiUlkEfzw" : 9358 }
-				# { "_id" : ObjectId("61b4c213c58d07cb2b6ae9c0"), "HURyuJQRHD" : 8824 }
-				# { "_id" : ObjectId("61b4c213c58d07cb2b6ae9c1"), "uSWdoidJZc" : 7532 }
-				# { "_id" : ObjectId("61b4c213c58d07cb2b6ae9c2"), "kymycJScNC" : 9261 }
+	todo = {
+		"text": request.form["text"],
+		"timestamp": datetime.timestamp(datetime.now()),
+		"datetime": datetime.now().strftime("%d.%m.%Y-%H:%M:%S"),
+		"completed": False
+	}
+	todos_collection.insert_one(todo)
 
-    # 	"""
-    	# aparent nu merge sa adaugi cand deja sa facut strcutura
-    	"datetime": datetime.now().strftime("%d.%m.%Y-%H:%M:%S"),
-    	"inca_o_col": 123
-    })
-
-    # testing_collection.update_one
+	# return dict(todo), {
+	# 	"Refresh": "1; url={}".format(url_for("todos"))
+	# }
+	return redirect(url_for("todos"))
 
 
-  return {"dir": dir(testing_collection.find())}
 
 
-@todos.route("/", methods=['POST'])
-@todos.route("/<component_name>", methods=['POST'])
-def graphql_query(component_name="app"):
-	return str(component_name)
+
+
+
+@todos.route("/mongo/complete/<oid>")
+def mongo_complete(oid):
+	todos_collection = get_collection(todos_collection_name)
+	requested_todo = todos_collection.find_one({
+		"_id": ObjectId(oid)
+	})
+	completed = True
+	if requested_todo["completed"]: # type: ignore
+		completed = False
+
+	todos_collection.update_one(
+		requested_todo,
+		{"$set": { "completed": completed }})
+
+	# todos_collection.replace_one(requested_todo, {"something": "else"})
+
+	# 61b6247e165b109454a32c1b
+	# 61b6247e165b109454a32c1b
+
+	return redirect(url_for("todos"))
+
+
+@todos.route("/mongo/delete/<oid>")
+def mongo_delete(oid):
+	todos_collection = get_collection(todos_collection_name)
+	requested_todo = todos_collection.find_one({
+		"_id": ObjectId(oid)
+	})
+	todos_collection.delete_one(requested_todo)
+	return redirect(url_for("todos"))
+
+
+@todos.route('/mongo/delete/all')
+def mongo_delete_all():
+	todos_collection = get_collection(todos_collection_name)
+	todos_collection.delete_many({})
+	return redirect(url_for('todos'))
+
+# @todos.route("/", methods=['POST'])
+# @todos.route("/<component_name>", methods=['POST'])
+# def graphql_query(component_name="app"):
+# 	return str(component_name)
+
+
+

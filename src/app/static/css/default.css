@@ -32,9 +32,10 @@
 }
 
 body {
-	background-color: #2b2a2a;
-	align-content: center;
-	align-items: center;
+	/*background-color: #2b2a2a;*/
+    background-color: #282c34;
+/*	align-content: center;
+	align-items: center;*/
 	font-family: var(--global-font);
 	font-size: var(--global-font-size);
 }

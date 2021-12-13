@@ -18,22 +18,17 @@ def generate_random_token():
 	return "".join([choice(ascii_letters + digits) for _ in range(30)])
 
 
-api = Blueprint("api", __name__)
+api = Blueprint("api", __name__, url_prefix="/api")
 
-
-__api = "/api"
-
-@api.route(__api)
+@api.route("/")
 def home():
 	return "not good"
 
-@api.route(__api + "/asd")
+@api.route("/asd")
 def asd():
 	return "asd"
 
-# TODO sa nu dai commit pentru trebuie sa ascunzi postgres user
-
-@api.route(__api + "/login", methods=["GET"])
+@api.route("/login", methods=["GET"])
 def login():
 	# TODO make the token expire in 5 minutes
 	url_token = request.args.get("token")
@@ -52,7 +47,7 @@ def login():
 
 
 
-@api.route(__api + "/new-token")
+@api.route("/new-token")
 def generate_token():
 	new_token = generate_random_token()
 	try:

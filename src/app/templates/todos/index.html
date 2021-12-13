@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> title </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"
+		integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+	<link rel="icon" href="{{ url_for('static', filename='img/logo/website-logo.png') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='todos/style.css') }}">
+</head>
+
+<body>
+	<script>
+		$(document).ready(function() {
+			// this is not document on load
+		})
+
+
+
+	</script>
+	<div>
+		<p class="text-color"> todo list </p>
+	</div>
+	<form action="{{ url_for('todos.mongo_add') }}" method="POST" role="form">
+		<!-- name is the key that you will use to access the data from textbox; like this: request.form["text"] -->
+		<input class="todo-text-box" name="text" type="text" placeholder="just a todo" autofocus >
+		<!-- <textarea class="todo-text-box" name="text" type="text" placeholder="just a todo" autofocus> </textarea> -->
+	</form>
+	<ul>
+		{% for todo in todo_list %}
+		<li>
+			<div class="todo-div">
+				<a href="{{ url_for('todos.mongo_complete', oid=todo._id) }}" class="todo-complete {% if todo.completed %}todo-completed{% endif %}">
+					{{todo.text}}
+				</a>
+				<a href="{{ url_for('todos.mongo_delete', oid=todo._id) }}" class="todo-delete">
+					delete
+				</a>
+
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+
+</html>
