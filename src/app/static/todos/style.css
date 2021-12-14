@@ -29,6 +29,7 @@
 	--one-dark-background: #282c34;
 	--one-dark-yellow: #e5c07b;
 	--one-dark-green:  #98c379;
+	--one-dark-blue: #61AFEF;
 }
 
 *:link {
@@ -91,4 +92,10 @@ li {
 	background-color: darkkhaki;
 	color: var(--one-dark-background);
 	border-color: var(--one-dark-background);
+}
+
+
+.register-div {
+	padding: 5px;
+	margin: 5px;
 }

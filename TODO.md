@@ -61,9 +61,10 @@ To fix this make sure to import all your view modules, database models, and ever
 - [x] make the todo app better by not refreshing and redirecting every time when you add or delete a todo item (use ajax) (now its far more better and faster)
 - [x] filter todo input results (if is "" then reject it)
 - [ ] how to make browser auto refresh from jquery
-- [ ]
-- [ ]
-- [ ]
+- [ ] add async spinner while the page loads
+- [ ] add login to /todos interface
+- [ ] add register to /todos interface
+- [ ] add captcha validation to your form
 - [ ]
 - [ ]
 - [ ]

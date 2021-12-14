@@ -1,4 +1,5 @@
 alembic==1.7.5
+appdirs==1.4.4
 attrs==21.2.0
 auto-profiler==1.4
 bidict==0.21.4
@@ -24,6 +25,7 @@ gunicorn==20.1.0
 idna==3.3
 iniconfig==1.1.1
 itsdangerous==2.0.1
+jedi==0.18.1
 Jinja2==3.0.3
 livereload==2.5.1
 Mako==1.1.6
@@ -31,9 +33,12 @@ MarkupSafe==2.0.1
 MongoAlchemy==0.19
 monotonic==1.6
 packaging==21.3
+parso==0.8.3
 pip-autoremove==0.10.0
 pluggy==1.0.0
+prompt-toolkit==3.0.24
 psycopg2==2.9.2
+ptpython==3.0.20
 py==1.11.0
 Pygments==2.10.0
 pymongo==4.0.1
@@ -54,6 +59,7 @@ toml==0.10.2
 tornado==6.1
 tree-format==0.1.1
 urllib3==1.26.7
+wcwidth==0.2.5
 Werkzeug==2.0.2
 wrapt==1.13.3
 zope.event==4.5.0

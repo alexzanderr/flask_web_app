@@ -2,6 +2,7 @@
 
 from flask_pymongo import PyMongo
 from pymongo.errors import CollectionInvalid
+from pymongo.errors import InvalidOperation
 from bson.objectid import ObjectId
 
 mongodb = PyMongo()
@@ -39,6 +40,16 @@ def get_collection(name: str):
 			"'collection_create(\"{name}\")'"
 		)
 
-	return mongodb.db.get_collection(name)
+	return mongodb.db.get_collection(name) # type: ignore
 
+
+def create_or_get_collection(name: str):
+	# if it doesnt exist, then create
+	if not collection_exists(name):
+		result = collection_create(name)
+		if not result:
+			raise ValueError(f"could not create collection: {name}")
+
+	# then return the collection
+	return get_collection(name)
 
