@@ -4,4 +4,4 @@
 # because this script is run from makefile
 # and cwd is the root of the project
 cd ./src
-pytest -vv
+pytest -vv -n 4
