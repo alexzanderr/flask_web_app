@@ -53,3 +53,8 @@ def create_or_get_collection(name: str):
 	# then return the collection
 	return get_collection(name)
 
+
+# you can put collections here
+# because right now at runtime when this is imported
+# the mongodb.db is None
+# because the mongo db is not initialized with the app

@@ -25,6 +25,15 @@ from ..mongodb_client import get_db_name
 from ..mongodb_client import collection_create
 from ..mongodb_client import get_collection
 from ..mongodb_client import create_or_get_collection
+# from ..mongodb_client import (
+#     todos_collection,
+#     todos_collection_name)
+# from ..mongodb_client import (
+#     users_collection,
+#     users_collection_name)
+# from ..mongodb_client import (
+#     register_tokens_collection,
+#     register_tokens_collection_name)
 from ..routes_utils import json_response
 
 from string import ascii_letters, digits
@@ -40,6 +49,8 @@ todos = Blueprint(
     # not working
     # template_folder="templates/todos"
 )
+
+
 # document template
 # todo = {
 #     text: 'yeaaah',
@@ -47,6 +58,7 @@ todos = Blueprint(
 #     datetime: '14.12.2021-16:40:01',
 #     completed: false
 # }
+# TODO, put these collections somewhere in a better place
 todos_collection_name = "todos"
 todos_collection = create_or_get_collection(todos_collection_name)
 
@@ -64,6 +76,9 @@ users_collection = create_or_get_collection(users_collection_name)
 
 # ('_id', 1)]},
 # 'username_1': {'v': 2, 'key': [('username', 1)], 'unique': True}}
+
+
+# users_collection.create_index([("username", 1)], unique=True)
 
 users_unique_keys = [{
     "name": "username",
@@ -83,12 +98,10 @@ for users_unique_key in users_unique_keys:
         ], unique=True)
 
 
+
+
 register_tokens_collection_name = "register_tokens"
 register_tokens_collection = create_or_get_collection(register_tokens_collection_name)
-
-# ('_id', 1)]},
-# 'username_1': {'v': 2, 'key': [('username', 1)], 'unique': True}}
-
 tokens_unique_keys = [{
     "name": "token",
     "exists": False
@@ -100,14 +113,11 @@ for _, value in users_collection.index_information().items():
                 tokens_unique_key["exists"] = True
 
 
-for tokens_unique_key in users_unique_keys:
+for tokens_unique_key in tokens_unique_keys:
     if not tokens_unique_key["exists"]:
-        users_collection.create_index([
+        register_tokens_collection.create_index([
             (tokens_unique_key["name"], 1)
         ], unique=True)
-
-# users_collection.create_index([("username", 1)], unique=True)
-
 
 @todos.route("/")
 def todos_root():
