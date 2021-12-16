@@ -1,0 +1,28 @@
+
+
+name: Integrate Flask app to main branch from dev branch
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10"]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: install deps
+        # vezi ca s-ar putea sa fie python3 daca e pe ubuntu
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with pytest
+        run: |
+          make test
+

@@ -65,8 +65,8 @@ To fix this make sure to import all your view modules, database models, and ever
 - [ ] add login to /todos interface
 - [ ] add register to /todos interface
 - [ ] add captcha validation to your form
-- [ ]
-- [ ]
+- [ ] add security check access tokens in code
+- [ ] add security check for vulnerabilities in code
 - [ ]
 - [ ]
 - [ ]

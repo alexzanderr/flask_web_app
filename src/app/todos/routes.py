@@ -1,7 +1,7 @@
 """
-	# type: ignore
-	type ignore is to tell LSP-pyright to ignore the line
-	because something it thinks that there are errors, but actually at runtime there are not
+    # type: ignore
+    type ignore is to tell LSP-pyright to ignore the line
+    because something it thinks that there are errors, but actually at runtime there are not
 """
 
 from .validation import validate_password_check
@@ -53,11 +53,11 @@ todos_collection = create_or_get_collection(todos_collection_name)
 
 # document template
 # user = {
-# 	"username": "alexzander",
-# 	"password": "37djw7dh237dh2yudhja1721hg2", # hashed
-# 	"eamil": "alexxander18360@gmail.com",
-# 	"creation_timestamp": datetime.timestamp(datetime.now()),
-# 	"creation_datetime": datetime.now().strftime("%d.%m.%Y-%H:%M:%S")
+#   "username": "alexzander",
+#   "password": "37djw7dh237dh2yudhja1721hg2", # hashed
+#   "eamil": "alexxander18360@gmail.com",
+#   "creation_timestamp": datetime.timestamp(datetime.now()),
+#   "creation_datetime": datetime.now().strftime("%d.%m.%Y-%H:%M:%S")
 # }
 users_collection_name = "users"
 users_collection = create_or_get_collection(users_collection_name)
@@ -163,7 +163,7 @@ def mongo_add():
     })
 
     # return dict(todo), {
-    # 	"Refresh": "1; url={}".format(url_for("todos"))
+    #   "Refresh": "1; url={}".format(url_for("todos"))
     # }
     return redirect("/todos")
 
@@ -206,7 +206,7 @@ def mongo_delete_all():
 # @todos.route("/", methods=['POST'])
 # @todos.route("/<component_name>", methods=['POST'])
 # def graphql_query(component_name="app"):
-# 	return str(component_name)
+#   return str(component_name)
 
 
 todos_api = Blueprint(
@@ -382,9 +382,9 @@ def todos_api_register():
 
     return json_response(results, 200)
     # return {
-    # 	"username": username,
-    # 	"email": email,
-    # 	"password": password,
-    # 	"password_check": password_check,
-    # 	"remember_me": remember_me
+    #   "username": username,
+    #   "email": email,
+    #   "password": password,
+    #   "password_check": password_check,
+    #   "remember_me": remember_me
     # }, 200

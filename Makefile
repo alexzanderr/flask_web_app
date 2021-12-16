@@ -44,6 +44,10 @@ crun:
 test:
 	./src/pytest.sh
 
+lint:
+	pylint --load-plugins pylint_flask -j 4 `ls -R|grep .py$|xargs`
+
+
 pyinstaller:
 	$(BASENAME_ROOT)/pyinstaller-venv/bin/pyinstaller --noconfirm --clean --onedir --name $(ROOT_NAME) main.py
 
