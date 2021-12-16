@@ -67,7 +67,7 @@ To fix this make sure to import all your view modules, database models, and ever
 - [ ] add captcha validation to your form
 - [ ] add security check access tokens in code
 - [ ] add security check for vulnerabilities in code
-- [ ]
+- [ ] ModuleNotFoundError: No module named 'app' when testing on github workflows, maybe because in stupid ubuntu you cant use from `module_name`.something import `else`, tin minte asta din experienta mea cu aplicatiile mele, cand ai import from root package pur si simplu nu merge
 - [ ]
 - [ ]
 - [ ]
