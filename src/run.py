@@ -3,11 +3,11 @@
 """
 
 from rich.traceback import install
+install(show_locals=False)
 from flask_socketio import SocketIO
 # from livereload import Server
 from src.app import create_app
 
-install(show_locals=False)
 
 # https://github.com/nathanwright1242/flask_livereload_example/issues/1
 

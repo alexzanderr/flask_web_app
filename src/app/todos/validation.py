@@ -1,35 +1,8 @@
 
+# from ..mongodb_client import users_collection
 
-
-
-from ..mongodb_client import mongodb
-from ..mongodb_client import CollectionInvalid
-from ..mongodb_client import ObjectId
-from ..mongodb_client import collection_exists
-from ..mongodb_client import get_db_name
-from ..mongodb_client import collection_create
 from ..mongodb_client import get_collection
-from ..mongodb_client import create_or_get_collection
 
-users_collection_name = "users"
-users_collection = create_or_get_collection(users_collection_name)
-
-users_unique_keys = [{
-	"name": "username",
-	"exists": False
-}]
-for _, value in users_collection.index_information().items():
-	for unique_key in value["key"]:
-		for users_unique_key in users_unique_keys:
-			if unique_key[0] == users_unique_key["name"]:
-				users_unique_key["exists"] = True
-
-
-for users_unique_key in users_unique_keys:
-	if not users_unique_key["exists"]:
-		users_collection.create_index([
-			(users_unique_key["name"], 1)
-		], unique=True)
 
 import re
 
@@ -57,7 +30,9 @@ def validate_username(username: str):
 			"error_message": "username must contain only alpha numeric values and underscore"
 		}
 
-	if users_collection.find_one({ "username": username }):
+	# deci testele au mers pana acum pentru
+	# ca era mongo db involved aici
+	if get_collection("users").find_one({ "username": username }):
 		return {
 			"passed": False,
 			"error_message": "username already exists"
